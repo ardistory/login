@@ -3,7 +3,7 @@ import Button from '@/Components/Button';
 import GuestLayout from '@/Layouts/GuestLayout';
 import HeadLayout from '@/Layouts/HeadLayout';
 import { Link } from '@inertiajs/react';
-import { Code, CodepenLogo, SignIn, WifiHigh } from '@phosphor-icons/react';
+import { Code, CodepenLogo, Power, SignIn, WifiHigh } from '@phosphor-icons/react';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
@@ -17,20 +17,26 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         Network Lebak
                     </div>
                     <BoxGlass className={'px-1 py-1 flex justify-between gap-1'}>
-                        <Link href={route('login')}>
-                            <Button variant={'green'} className={'text-white'} icon={<SignIn />}>
-                                Login
-                            </Button>
-                        </Link>
+                        {auth.user ? (
+                            <Link method={'post'} href={route('logout')}>
+                                <Button variant={'orange'} className={'text-white'} icon={<Power />}>
+                                    Logout
+                                </Button>
+                            </Link>
+                        ) : (
+                            <Link href={route('login')}>
+                                <Button variant={'green'} className={'text-white'} icon={<SignIn />}>
+                                    Login
+                                </Button>
+                            </Link>
+                        )}
                         <div className={'flex gap-1'}>
-                            <BoxGlass className={'px-2 py-1 text-sm font-semibold bg-red-500/30 hover:bg-red-500/60 cursor-pointer text-white flex items-center gap-1'}>
-                                <CodepenLogo />
+                            <Button variant={'red'} className={'text-white'} icon={<CodepenLogo />}>
                                 Laravel: {laravelVersion}
-                            </BoxGlass>
-                            <BoxGlass className={'px-2 py-1 text-sm font-semibold bg-blue-500/30 hover:bg-blue-500/60 cursor-pointer text-white flex items-center gap-1'}>
-                                <Code />
+                            </Button>
+                            <Button variant={'blue'} className={'text-white'} icon={<Code />}>
                                 PHP: {phpVersion}
-                            </BoxGlass>
+                            </Button>
                         </div>
                     </BoxGlass>
                 </div>
