@@ -2,18 +2,17 @@ import { useEffect } from 'react';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import Button from '@/Components/Button';
 import { IdentificationCard } from '@phosphor-icons/react';
 
-export default function Register() {
+export default function Register({ availableUsers }) {
     const { data, setData, post, processing, errors, reset } = useForm({
+        nik: '',
         name: '',
         email: '',
-        nik: '',
         password: '',
         password_confirmation: '',
     });
@@ -23,6 +22,17 @@ export default function Register() {
             reset('password', 'password_confirmation');
         };
     }, []);
+
+    function handleChange(e) {
+        const selectedNik = e.target.value;
+        const selectedUser = availableUsers.find(user => user.nik == selectedNik);
+
+        setData({
+            ...data,
+            nik: selectedUser.nik,
+            name: selectedUser.name
+        });
+    }
 
     const submit = (e) => {
         e.preventDefault();
@@ -38,20 +48,22 @@ export default function Register() {
 
                 <form onSubmit={submit}>
                     <div>
-                        <InputLabel htmlFor="name" value="Name" />
+                        <InputLabel value="Nik" />
 
-                        <TextInput
-                            id="name"
-                            name="name"
-                            value={data.name}
-                            className="mt-1 block w-full"
-                            autoComplete="name"
-                            isFocused={true}
-                            onChange={(e) => setData('name', e.target.value)}
-                            required
-                        />
+                        <select onChange={handleChange} className={'w-full bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
+                            <option value={''} id={''} className={'bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
+                                Nik
+                            </option>
+                            {availableUsers.map(user => {
+                                return (
+                                    <option key={user.nik} value={user.nik} className={'bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
+                                        {user.name} - {user.nik}
+                                    </option>
+                                );
+                            })}
+                        </select>
 
-                        <InputError message={errors.name} className="mt-2" />
+                        <InputError message={errors.nik} className="mt-2" />
                     </div>
 
                     <div className="mt-4">
@@ -69,22 +81,6 @@ export default function Register() {
                         />
 
                         <InputError message={errors.email} className="mt-2" />
-                    </div>
-
-                    <div className="mt-4">
-                        <InputLabel htmlFor="nik" value="Nik" />
-
-                        <TextInput
-                            id="nik"
-                            type="text"
-                            name="nik"
-                            value={data.nik}
-                            className="mt-1 block w-full"
-                            onChange={(e) => setData('nik', e.target.value)}
-                            required
-                        />
-
-                        <InputError message={errors.nik} className="mt-2" />
                     </div>
 
                     <div className="mt-4">

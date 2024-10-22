@@ -1,6 +1,7 @@
 import GuestLayout from '@/Layouts/GuestLayout';
-import PrimaryButton from '@/Components/PrimaryButton';
 import { Head, Link, useForm } from '@inertiajs/react';
+import Button from '@/Components/Button';
+import { Power } from '@phosphor-icons/react';
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
@@ -12,34 +13,38 @@ export default function VerifyEmail({ status }) {
     };
 
     return (
-        <GuestLayout>
+        <>
             <Head title="Email Verification" />
 
-            <div className="mb-4 text-sm text-gray-600">
-                Thanks for signing up! Before getting started, could you verify your email address by clicking on the
-                link we just emailed to you? If you didn't receive the email, we will gladly send you another.
-            </div>
+            <GuestLayout className={'mx-10'}>
 
-            {status === 'verification-link-sent' && (
-                <div className="mb-4 font-medium text-sm text-green-600">
-                    A new verification link has been sent to the email address you provided during registration.
+                <div className="mb-4 text-sm text-white">
+                    Terima kasih telah mendaftar! Sebelum memulai, dapatkah Anda memverifikasi alamat email Anda dengan mengeklik tautan yang baru saja kami kirimkan kepada Anda? Jika Anda tidak menerima email tersebut, kami akan dengan senang hati mengirimkan email lain kepada Anda.
                 </div>
-            )}
 
-            <form onSubmit={submit}>
-                <div className="mt-4 flex items-center justify-between">
-                    <PrimaryButton disabled={processing}>Resend Verification Email</PrimaryButton>
+                {status === 'verification-link-sent' && (
+                    <div className="mb-4 font-medium text-sm text-green-600">
+                        Tautan verifikasi baru telah dikirim ke alamat email yang Anda berikan saat pendaftaran.
+                    </div>
+                )}
 
-                    <Link
-                        href={route('logout')}
-                        method="post"
-                        as="button"
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Log Out
-                    </Link>
-                </div>
-            </form>
-        </GuestLayout>
+                <form onSubmit={submit}>
+                    <div className="mt-4 flex items-center justify-between">
+                        <Button disabled={processing}>Kirim Ulang Email Verifikasi</Button>
+
+                        <Link
+                            href={route('logout')}
+                            method="post"
+                            as="button"
+                        >
+                            <Button variant={'red'} className={'text-white'} icon={<Power />}>
+                                Logout
+                            </Button>
+                        </Link>
+
+                    </div>
+                </form>
+            </GuestLayout>
+        </>
     );
 }

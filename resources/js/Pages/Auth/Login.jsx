@@ -3,13 +3,11 @@ import Checkbox from '@/Components/Checkbox';
 import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 import Button from '@/Components/Button';
-import { SignIn } from '@phosphor-icons/react';
+import { IdentificationCard, SignIn } from '@phosphor-icons/react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import toast from 'react-hot-toast';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -95,9 +93,15 @@ export default function Login({ status, canResetPassword }) {
                             </Link>
                         )}
 
-                        <Button disabled={processing} className={'text-white ms-4'} icon={<SignIn />}>
-                            Log in
-                        </Button>
+                        <div className={'flex gap-2'}>
+                            <Link href={route('register')} className={'text-white transition-all duration-200 px-2 py-1 rounded-2xl backdrop-blur-[2px] border border-white/5 text-sm font-semibold flex items-center gap-1'}>
+                                <IdentificationCard />
+                                Register
+                            </Link>
+                            <Button disabled={processing} className={'text-white'} icon={<SignIn />}>
+                                Log in
+                            </Button>
+                        </div>
                     </div>
                 </form>
             </GuestLayout>

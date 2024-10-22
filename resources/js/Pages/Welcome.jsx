@@ -1,3 +1,4 @@
+import ApplicationLogo from '@/Components/ApplicationLogo';
 import BoxGlass from '@/Components/BoxGlass';
 import Button from '@/Components/Button';
 import GuestLayout from '@/Layouts/GuestLayout';
@@ -12,10 +13,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
             <GuestLayout className={'mx-10'}>
                 <div className={'space-y-5'}>
-                    <div className={'text-3xl md:text-6xl font-bold italic tracking-tight flex items-center justify-center gap-2 text-white'}>
-                        <WifiHigh className={'animate-pulse'} />
-                        Network Lebak
-                    </div>
+                    <ApplicationLogo />
                     <BoxGlass className={'px-1 py-1 flex justify-between gap-1'}>
                         {auth.user ? (
                             <Link href={route('dashboard')}>
