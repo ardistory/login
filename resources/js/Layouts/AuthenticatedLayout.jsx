@@ -5,6 +5,7 @@ import { Barcode, DotsThreeVertical, GearSix, Power, Speedometer } from '@phosph
 import { Link, router, usePage } from '@inertiajs/react';
 import Button from '@/Components/Button';
 import { Button as ButtonAria, Menu, MenuItem, MenuTrigger, Popover } from 'react-aria-components';
+import toast from 'react-hot-toast';
 
 export default function AuthenticatedLayout({ children, user }) {
     const { url } = usePage();
@@ -38,7 +39,7 @@ export default function AuthenticatedLayout({ children, user }) {
                                             <GearSix size={20} />
                                             Setting
                                         </MenuItem>
-                                        <MenuItem className={'flex items-center gap-1 cursor-pointer hover:bg-red-500/50 px-2 py-1 rounded-lg'} onAction={() => router.visit(route('logout'), { method: 'post' })}>
+                                        <MenuItem className={'flex items-center gap-1 cursor-pointer hover:bg-red-500/50 px-2 py-1 rounded-lg'} onAction={() => router.visit(route('logout'), { method: 'post', onFinish: toast.success('Logout berhasil') })}>
                                             <Power size={20} />
                                             Logout
                                         </MenuItem>
