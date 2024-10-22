@@ -3,7 +3,7 @@ import Button from '@/Components/Button';
 import GuestLayout from '@/Layouts/GuestLayout';
 import HeadLayout from '@/Layouts/HeadLayout';
 import { Link } from '@inertiajs/react';
-import { Code, CodepenLogo, Power, SignIn, WifiHigh } from '@phosphor-icons/react';
+import { Code, CodepenLogo, SignIn, Speedometer, WifiHigh } from '@phosphor-icons/react';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
@@ -18,9 +18,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
                     <BoxGlass className={'px-1 py-1 flex justify-between gap-1'}>
                         {auth.user ? (
-                            <Link method={'post'} href={route('logout')}>
-                                <Button variant={'orange'} className={'text-white'} icon={<Power />}>
-                                    Logout
+                            <Link href={route('dashboard')}>
+                                <Button variant={'orange'} className={'text-white'} icon={<Speedometer />}>
+                                    Dashboard
                                 </Button>
                             </Link>
                         ) : (
