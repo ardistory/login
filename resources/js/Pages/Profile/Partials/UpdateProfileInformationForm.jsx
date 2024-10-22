@@ -20,11 +20,11 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
     };
 
     return (
-        <section className={className}>
+        <div className={className}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900">Profile Information</h2>
 
-                <p className="mt-1 text-sm text-gray-600">
+                <p className="mt-1 text-sm text-white">
                     Update your account's profile information and email address.
                 </p>
             </header>
@@ -98,6 +98,6 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                     </Transition>
                 </div>
             </form>
-        </section>
+        </div>
     );
 }

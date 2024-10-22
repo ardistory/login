@@ -1,13 +1,13 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard({ auth }) {
+export default function MacAddress({ auth }) {
     return (
         <>
-            <Head title="Dashboard" />
+            <Head title="MacAddress" />
 
             <AuthenticatedLayout user={auth.user}>
-                Dashboard
+                MacAddress
             </AuthenticatedLayout>
         </>
     );
