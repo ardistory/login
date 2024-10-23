@@ -7,8 +7,13 @@ import Button from '@/Components/Button';
 import { Button as ButtonAria, Menu, MenuItem, MenuTrigger, Popover } from 'react-aria-components';
 import toast from 'react-hot-toast';
 
+
 export default function AuthenticatedLayout({ children, user }) {
     const { url } = usePage();
+
+    function dynamicActive(routeName) {
+        return route(routeName).endsWith(url) ? 'overflow-hidden before:w-36 before:h-36 before:bg-gradient-to-br before:from-blue-500/50 before:from-50% before:to-pink-500/50 before:to-50% before:absolute before:rounded-full before:blur-[30px] before:-z-10' : '';
+    }
 
     return (
         <div className={'mx-[3%] h-dvh flex justify-center items-center'}>
@@ -19,13 +24,13 @@ export default function AuthenticatedLayout({ children, user }) {
                     <div className={'w-[25%] h-full border-r border-white/20'}>
                         <div className={'flex items-center justify-between p-2 border-b border-white/20'}>
                             <div className={'flex items-center gap-2'}>
-                                <img src={ProfileImage} className={'w-10 h-10 rounded-full'} />
+                                <img src={ProfileImage} className={'w-10 h-10 rounded-full border border-white/20'} />
                                 <div className={'flex flex-col'}>
                                     <span className={'text-white font-semibold text-sm'}>
                                         {user.name}
                                     </span>
                                     <span className={'text-gray-400 font-semibold text-xs'}>
-                                        {user.email}
+                                        {user.nik}
                                     </span>
                                 </div>
                             </div>
@@ -48,17 +53,17 @@ export default function AuthenticatedLayout({ children, user }) {
                             </MenuTrigger>
                         </div>
                         <Link href={route('dashboard')}>
-                            <Button variant={(url === '/dashboard' ? 'blue' : 'zinc')} className={'text-white w-full px-4 py-3 rounded-none'} icon={<Speedometer size={20} />}>
+                            <Button className={`text-white w-full px-4 py-3 rounded-none ${dynamicActive('dashboard')}`} icon={<Speedometer size={20} />}>
                                 Dashboard
                             </Button>
                         </Link>
                         <Link href={route('mac-address')}>
-                            <Button variant={(url === '/mac-address' ? 'blue' : 'zinc')} className={'text-white w-full px-4 py-3 rounded-none'} icon={<Barcode size={20} />}>
+                            <Button className={`text-white w-full px-4 py-3 rounded-none ${dynamicActive('mac-address')}`} icon={<Barcode size={20} />}>
                                 Mac-Address
                             </Button>
                         </Link>
                     </div>
-                    <div className={'w-[75%] h-full overflow-auto'}>
+                    <div className={'w-[75%] h-full overflow-y-auto overflow-x-hidden'}>
                         {children}
                     </div>
                 </div>
