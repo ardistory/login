@@ -1,4 +1,5 @@
 import BoxGlass from '@/Components/BoxGlass';
+import Button from '@/Components/Button';
 import InputLabel from '@/Components/InputLabel';
 import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
@@ -15,28 +16,38 @@ export default function Dashboard({ auth, tokoLbk }) {
                     <InputLabel htmlFor="search" value="Search" />
                     <TextInput id={'search'} className={'mt-1'} />
 
-                    <BoxGlass className={'mt-3 px-2 py-1 text-white flex items-center gap-5'}>
-                        <div className={'flex items-center gap-2'}>
-                            <Storefront size={32} />
-                            <div>
-                                <p className={'font-bold text-lg'}>
-                                    TKBV
-                                </p>
-                                <p className={'font-semibold text-xs text-white/70'}>
-                                    DC LEBAK
-                                </p>
+                    <BoxGlass className={'mt-3 px-2 py-1 text-white flex items-center justify-between'}>
+                        <div className={'flex items-center gap-5'}>
+                            <div className={'flex items-center gap-2'}>
+                                <Storefront size={32} />
+                                <div>
+                                    <p className={'font-bold text-lg'}>
+                                        TKBV
+                                    </p>
+                                    <p className={'font-semibold text-xs text-white/70'}>
+                                        DC LEBAK
+                                    </p>
+                                </div>
+                            </div>
+                            <div className={'flex items-center gap-2'}>
+                                <img src={`storage/img/photo.jpg`} className={'w-10 h-10 rounded-full'} />
+                                <div>
+                                    <p className={'font-bold text-lg'}>
+                                        IRWANA
+                                    </p>
+                                    <p className={'font-semibold text-xs text-white/70'}>
+                                        2015171331
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div className={'flex items-center gap-2'}>
-                            <img src={`storage/img/photo.jpg`} className={'w-10 h-10 rounded-full'} />
-                            <div>
-                                <p className={'font-bold text-lg'}>
-                                    IRWANA
-                                </p>
-                                <p className={'font-semibold text-xs text-white/70'}>
-                                    2015171331
-                                </p>
-                            </div>
+                        <div className={'flex gap-2'}>
+                            <Button variant={'gradient'}>
+                                IP Address
+                            </Button>
+                            <Button variant={'gradient'}>
+                                CCTV
+                            </Button>
                         </div>
                     </BoxGlass>
                 </div>

@@ -12,6 +12,7 @@ export default function Button({ children, className, variant = 'zinc', disabled
         red: 'bg-red-500/30 hover:bg-red-500/60',
         green: 'bg-green-500/30 hover:bg-green-500/60',
         zinc: 'bg-zinc-500/30 hover:bg-zinc-500/60',
+        gradient: 'before:w-16 before:h-5 before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:bg-gradient-to-br before:from-sky-500 before:from-50% before:to-rose-500 before:to-50% before:rounded-full before:absolute before:-z-10 before:blur-[10px] hover:before:bg-gradient-to-br hover:before:from-blue-400 hover:before:from-50% hover:before:to-pink-400 hover:before:to-50% before:transition-all before:duration-200',
     };
 
     return (
