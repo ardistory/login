@@ -14,7 +14,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             <GuestLayout className={'mx-10'}>
                 <div className={'space-y-5'}>
                     <ApplicationLogo />
-                    <BoxGlass className={'px-1 py-1 flex justify-between gap-1'}>
+                    <BoxGlass className={'px-1 py-1 rounded-3xl flex justify-between gap-1'}>
                         {auth.user ? (
                             <Link href={route('dashboard')}>
                                 <Button variant={'orange'} className={'text-white'} icon={<Speedometer />}>
