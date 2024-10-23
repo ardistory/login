@@ -19,7 +19,7 @@ export default function AuthenticatedLayout({ children, user }) {
         <div className={'mx-[3%] h-dvh flex justify-center items-center'}>
             <img src={Background} className={'absolute w-full min-h-screen max-h-screen'} />
 
-            <BoxGlass padding={'p-0'} className={'w-full h-[90%]'}>
+            <BoxGlass padding={'p-0'} className={'w-full h-[90%] rounded-3xl'}>
                 <div className={'w-full h-full flex'}>
                     <div className={'w-[25%] h-full border-r border-white/20'}>
                         <div className={'flex items-center justify-between p-2 border-b border-white/20'}>
