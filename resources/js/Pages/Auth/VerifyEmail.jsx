@@ -1,7 +1,7 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 import Button from '@/Components/Button';
-import { Power } from '@phosphor-icons/react';
+import { ArrowClockwise, Power } from '@phosphor-icons/react';
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
@@ -30,7 +30,7 @@ export default function VerifyEmail({ status }) {
 
                 <form onSubmit={submit}>
                     <div className="mt-4 flex items-center justify-between">
-                        <Button disabled={processing}>Kirim Ulang Email Verifikasi</Button>
+                        <Button icon={<ArrowClockwise />} variant={'purple'} className={'text-white'} disabled={processing}>Kirim Ulang Email Verifikasi</Button>
 
                         <Link
                             href={route('logout')}
