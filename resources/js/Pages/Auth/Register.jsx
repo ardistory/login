@@ -50,13 +50,13 @@ export default function Register({ availableUsers }) {
                     <div>
                         <InputLabel value="Nik" />
 
-                        <select onChange={handleChange} className={'w-full bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
-                            <option value={''} id={''} className={'bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
+                        <select onChange={handleChange} className={'w-full text-white bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
+                            <option value={''} id={''} className={'bg-zinc-50/[0.1] text-black px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
                                 Nik
                             </option>
                             {availableUsers.map(user => {
                                 return (
-                                    <option key={user.nik} value={user.nik} className={'bg-zinc-50/[0.1] px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
+                                    <option key={user.nik} value={user.nik} className={'bg-zinc-50/[0.1] text-black px-3 py-2 backdrop-blur-[2px] border-t border-l border-r border-b border-t-white/15 border-l-white/15 border-r-white/5 border-b-white/5 border-none focus:border-none ring-0 focus:ring-0 rounded-xl shadow-sm'}>
                                         {user.name} - {user.nik}
                                     </option>
                                 );
