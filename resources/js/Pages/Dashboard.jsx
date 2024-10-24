@@ -1,10 +1,9 @@
 import BoxGlass from '@/Components/BoxGlass';
 import Button from '@/Components/Button';
-import InputLabel from '@/Components/InputLabel';
 import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-import { CellSignalHigh, CopySimple, Desktop, Eye, GlobeSimple, Scan, Storefront, TelevisionSimple, X } from '@phosphor-icons/react';
+import { Broom, CellSignalHigh, CopySimple, Desktop, Eye, GlobeSimple, Scan, Storefront, TelevisionSimple, X } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { Button as ButtonAria, Dialog, DialogTrigger, Modal } from 'react-aria-components';
 
@@ -22,10 +21,11 @@ export default function Dashboard({ auth, tokoLbk }) {
             <Head title="Dashboard" />
 
             <AuthenticatedLayout user={auth.user}>
-                <div className={'px-5 py-4'}>
-                    <InputLabel htmlFor="search" value="Search" />
-                    <TextInput value={search} id={'search'} className={'mt-1'} onChange={(e) => setSearch(e.target.value)} />
-
+                <div className={'w-full px-3 py-3 h-[10%] flex gap-2'}>
+                    <TextInput placeholder={'Search'} value={search} id={'search'} className={' placeholder-white/50'} onChange={(e) => setSearch(e.target.value)} />
+                    {search != '' ? (<Button icon={<X size={15} />} variant={'red'} className={'text-white'} onClick={() => setSearch('')} />) : ''}
+                </div>
+                <div className={'w-full h-[90%] px-3 pb-2 overflow-y-auto scrollbar-thin scrollbar-thumb-white scrollbar-track-white/5'}>
                     {filteredTokoLbk.map(toko => {
                         return (
                             <BoxGlass key={toko.kode_toko} className={'mt-3 px-2 py-1 text-white flex items-center justify-between'}>
@@ -54,7 +54,7 @@ export default function Dashboard({ auth, tokoLbk }) {
                                     </div>
                                     <div className={'flex gap-2'}>
                                         <DialogTrigger>
-                                            <ButtonAria className={'flex items-center gap-1 text-xs'}>
+                                            <ButtonAria className={'flex items-center gap-1 text-xs border border-white/20 px-2 py-1 rounded-lg hover:ring hover:ring-white/20'}>
                                                 <Eye size={18} />
                                                 Show
                                             </ButtonAria>
@@ -62,12 +62,12 @@ export default function Dashboard({ auth, tokoLbk }) {
                                                 <Dialog>
                                                     {({ close }) => (
                                                         <div className={'absolute w-full h-screen top-0 left-0 flex items-center justify-center'}>
-                                                            <BoxGlass className={'px-2 py-2 rounded text-white space-y-2'}>
+                                                            <BoxGlass className={'px-5 py-4 rounded text-white space-y-2'}>
                                                                 <div className={'flex justify-between items-center gap-2'}>
-                                                                    <div>
+                                                                    <div className={'font-semibold'}>
                                                                         {toko.kode_toko} - {toko.nama_toko}
                                                                     </div>
-                                                                    <X size={20} className={'cursor-pointer'} onClick={close} />
+                                                                    <X size={20} className={'cursor-pointer hover:text-red-400'} onClick={close} />
                                                                 </div>
                                                                 <div className={'font-semibold text-sm flex items-center gap-1'}>
                                                                     <GlobeSimple size={20} />

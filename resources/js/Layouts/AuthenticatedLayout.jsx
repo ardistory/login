@@ -46,7 +46,7 @@ export default function AuthenticatedLayout({ children, user }) {
                                             <GearSix size={20} />
                                             Setting
                                         </MenuItem>
-                                        <MenuItem className={'flex items-center gap-1 cursor-pointer hover:bg-red-500/50 px-2 py-1 rounded-lg'} onAction={() => router.visit(route('logout'), { method: 'post', onFinish: toast.success('Logout berhasil') })}>
+                                        <MenuItem className={'flex items-center gap-1 cursor-pointer hover:bg-red-500/50 px-2 py-1 rounded-lg'} onAction={() => router.visit(route('logout'), { method: 'post', onFinish: toast.success('Logged out!') })}>
                                             <Power size={20} />
                                             Logout
                                         </MenuItem>
