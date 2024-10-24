@@ -24,7 +24,9 @@ export default function AuthenticatedLayout({ children, user }) {
                     <div className={'w-[25%] h-full border-r border-white/20'}>
                         <div className={'flex items-center justify-between p-2 border-b border-white/20'}>
                             <div className={'flex items-center gap-2'}>
-                                <img src={ProfileImage} className={'w-10 h-10 rounded-full border border-white/20'} />
+                                <div className={'before:w-10 before:h-10 before:bg-gradient-to-br before:from-sky-500 before:from-50% before:to-rose-500 before:to-50% before:absolute before:rounded-full before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:blur-md before:-z-10 before:animate-pulse relative'}>
+                                    <img src={ProfileImage} className={'w-10 h-10 rounded-full border border-white/20'} />
+                                </div>
                                 <div className={'flex flex-col'}>
                                     <span className={'text-white font-semibold text-sm'}>
                                         {user.name}
