@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         $tokoLbk = TokoLbk::query()->join('available_users', 'tokolbk.area', '=', 'available_users.name')->select('tokolbk.*', 'available_users.nik')->inRandomOrder()->get();
 
-        return Inertia::render('Dashboard', [
+        return Inertia::render('Dashboard/Dashboard', [
             'tokoLbk' => $tokoLbk
         ]);
     }
