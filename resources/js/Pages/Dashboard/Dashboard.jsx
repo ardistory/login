@@ -20,7 +20,7 @@ export default function Dashboard({ auth, tokoLbk }) {
             <AuthenticatedLayout user={auth.user}>
                 <div className={'w-full px-3 py-3 h-[10%] flex gap-2'}>
                     <TextInput placeholder={'Search'} value={search} id={'search'} className={' placeholder-white/50'} onChange={(e) => setSearch(e.target.value)} />
-                    {search != '' ? (<Button icon={<X size={15} />} variant={'red'} className={'text-white'} onClick={() => setSearch('')} />) : ''}
+                    {search.trim() ? (<Button icon={<X size={15} />} variant={'red'} className={'text-white'} onClick={() => setSearch('')} />) : ''}
                 </div>
                 <FilteredStores filteredTokoLbk={filteredTokoLbk} />
             </AuthenticatedLayout>
